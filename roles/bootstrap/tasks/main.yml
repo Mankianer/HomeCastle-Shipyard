@@ -1,0 +1,8 @@
+---
+#TODO: Prüfe ob microk8s bereits installiert ist
+
+- name: "Install MicroK8s"
+  ansible.builtin.import_role:
+    name: microk8s
+  vars:
+    microk8s_primary_user: "{{ primary_user | default(ansible_user_id) }}"

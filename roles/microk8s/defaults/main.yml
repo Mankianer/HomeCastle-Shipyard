@@ -7,6 +7,7 @@ microk8s_addons_default:
   - dns
   - hostpath-storage
   - ingress
+  - metrics-server      # optional, aber nützlich
 
 # Zusätzliche Add-ons (kannst du aus site.yml überschreiben/erweitern)
 microk8s_addons_extra: []

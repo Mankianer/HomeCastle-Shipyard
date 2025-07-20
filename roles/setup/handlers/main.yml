@@ -29,3 +29,8 @@
     name: ansible
     state: present
     update_homebrew: true
+
+- name: "Install Linuxbrew"
+  ansible.builtin.import_role:
+    name: linuxbrew
+  when: ansible_user_id == "root"

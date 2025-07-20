@@ -1,0 +1,17 @@
+= BootStrap HomeCastle-Tools
+// tag::description[]
+_K8s Bootstrap, FluxCD BootStrap und BootStrap housekeeping-Task via Ansible-Pull._
+
+*Zielstatus:*
+
+* K8s Cluster ist aufgesetzt
+** microk8s ist installiert und konfiguriert
+* FluxCD ist konfiguriert und synchronisiert mit einem Git-Repository
+* Ansible-Pull ist eingerichtet und führt regelmäßig Housekeeping-Tasks aus
+// end::description[]
+
+== Requirements
+
+* Ansible >= 2.15
+* Ubuntu/Debian system
+* `community.general` collection

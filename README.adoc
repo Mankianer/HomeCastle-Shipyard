@@ -16,16 +16,7 @@ include::roles/setup/README.adoc[leveloffset=+2, tag=description]
 
 
 === BootStrap - `roles/bootstrap`
-_K8s Bootstrap, FluxCD BootStrap und BootStrap housekeeping-Task via Ansible-Pull._
-
-*Zielstatus:*
-
-* K8s Cluster ist aufgesetzt
-** microk8s ist installiert und konfiguriert
-* FluxCD ist konfiguriert und synchronisiert mit einem Git-Repository
-* Ansible-Pull ist eingerichtet und führt regelmäßig Housekeeping-Tasks aus
-
-
+include::roles/bootstrap/README.adoc[leveloffset=+2, tag=description]
 
 
 === Init/Housekeeping
@@ -49,7 +40,7 @@ ansible-galaxy collection install -r requirements.yml
 +
 [source,shell]
 ----
-ansible-playbook -i hosts.yml flimsyCastle-setup.yml --ask-become-pass
+ansible-playbook -i hosts.yml flimsyCastle-setup.yml
 ----
 
 
