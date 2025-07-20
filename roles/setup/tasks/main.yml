@@ -1,0 +1,6 @@
+---
+#TODO: Prüfen ob Linuxbrew bereits vorhanden ist
+
+- name: "Install Linuxbrew"
+  ansible.builtin.import_role:
+    name: linuxbrew

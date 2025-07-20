@@ -1,0 +1,19 @@
+= SetUp HomeCastle-Tools
+// tag::description[]
+_Installiert un konfiguriert von Tools._
+
+*Zielstatus:*
+
+* Tools sind installiert und für bootstrap konfiguriert:
+** linuxbrew
+** microk8s
+** fluxcd
+** helm
+** ansible
+// end::description[]
+
+== Requirements
+
+* Ansible >= 2.15
+* Ubuntu/Debian system
+* `community.general` collection

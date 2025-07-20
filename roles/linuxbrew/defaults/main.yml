@@ -1,0 +1,4 @@
+---
+linuxbrew_user_name: "linuxbrew"
+linuxbrew_user_shell: "/usr/sbin/nologin"
+linuxbrew_sudo_cmd: "ALL=(ALL) NOPASSWD:ALL"

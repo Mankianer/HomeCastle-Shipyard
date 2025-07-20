@@ -1,0 +1,44 @@
+---
+- name: Create linuxbrew user without login shell
+  ansible.builtin.user:
+    name: "{{ linuxbrew_user_name }}"
+    shell: "{{ linuxbrew_user_shell }}"
+    comment: "User for Homebrew/Linuxbrew installations"
+    create_home: true
+    state: present
+  become: true
+
+- name: Make sure the linuxbrew user home directory can be accessed
+  ansible.builtin.file:
+    path: "/home/{{ linuxbrew_user_name }}"
+    state: directory
+    mode: "0755"
+  become: true
+
+- name: Deploy sudoers file for linuxbrew user
+  ansible.builtin.template:
+    src: sudoers.j2
+    dest: "/etc/sudoers.d/{{ linuxbrew_user_name }}"
+    owner: root
+    group: root
+    mode: "0440"
+    validate: "visudo -cf %s"
+  become: true
+
+- name: "Install Linuxbrew for the linuxbrew user: {{ linuxbrew_user_name }}"
+  ansible.builtin.import_role:
+    name: markosamuli.linuxbrew
+  become: true
+  become_user: "{{ linuxbrew_user_name }}"
+  vars:
+    linuxbrew_use_installer: true
+    linuxbrew_init_shell: false
+
+- name: "Ensure Linuxbrew is in the PATH for all user"
+  become: true
+  ansible.builtin.template:
+    src: profile.d.j2
+    dest: /etc/profile.d/linuxbrew.sh
+    mode: "0644"
+    owner: root
+    group: root

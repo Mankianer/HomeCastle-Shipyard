@@ -1,0 +1,49 @@
+// README.adoc (general)
+= HomeCastle Ansible Playbooks
+
+In diesem Repository sind modulare Ansible-Playbooks enthalten, die zum Aufsetzten und
+
+
+
+
+
+
+== Structure/Konzept
+_Hier wird die Projektstruktur/Konzept aufgeführt._
+
+=== SetUp - `roles/setup`
+include::roles/setup/README.adoc[leveloffset=+2, tag=description]
+
+
+=== BootStrap - `roles/bootstrap`
+_K8s Bootstrap, FluxCD BootStrap und BootStrap housekeeping-Task via Ansible-Pull._
+
+*Zielstatus:*
+
+* K8s Cluster ist aufgesetzt und für gitOps konfiguriert
+* FluxCD ist konfiguriert und synchronisiert mit dem Git-Repository
+* Ansible-Pull ist eingerichtet und führt regelmäßig Housekeeping-Tasks aus
+
+
+
+
+=== Init/Housekeeping
+_Initialisierung und Housekeeping-Tasks, die regelmäßig ausgeführt werden._
+
+
+
+
+
+
+
+
+
+
+
+== ToDo
+
+== Requirements
+
+* Ansible >= 2.15
+* Ubuntu/Debian system
+* `community.general` collection
