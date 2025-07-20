@@ -1,0 +1,6 @@
+galaxy_info:
+  author: Mankianer
+  min_ansible_version: "2.15"
+  license: MIT
+  description: Install and configure MicroK8s on Ubuntu hosts
+dependencies: []

@@ -1,0 +1,6 @@
+---
+- name: Restart microk8s
+  ansible.builtin.command: snap restart microk8s
+  become: true
+  register: snap_restart
+  changed_when: "'Restarted' in snap_restart.stdout"

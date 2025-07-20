@@ -1,1 +1,20 @@
 ---
+- name: Add FluxCD Tap
+  become_user: "{{ fluxcd_linuxbrew_user_name }}"
+  become: true
+  community.general.homebrew_tap:
+    name: fluxcd/tap
+    state: present
+
+- name: Installiere Flux CLI
+  become_user: "{{ fluxcd_linuxbrew_user_name }}"
+  become: true
+  community.general.homebrew:
+    name: fluxcd/tap/flux
+    state: present
+    update_homebrew: true
+
+- name: Check if Flux CLI is installed
+  ansible.builtin.command: "flux --version"
+  register: fluxcd_version
+  changed_when: false

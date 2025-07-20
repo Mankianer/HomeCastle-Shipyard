@@ -1,0 +1,22 @@
+- name: Odroid-GitOps root setup
+  hosts: flimsy-castle-root
+  gather_facts: true
+
+  vars:
+    primary_user: "manki"
+
+  environment:
+    PATH: "/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:{{ ansible_env.PATH }}"
+
+  pre_tasks:
+    - name: Ensure base packages required by roles are present
+      ansible.builtin.package:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - python3
+        - rsync
+      tags: prerequisites
+
+  roles:
+    - role: setup

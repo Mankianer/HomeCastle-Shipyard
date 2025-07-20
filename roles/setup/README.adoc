@@ -6,7 +6,6 @@ _Installiert un konfiguriert von Tools._
 
 * Tools sind installiert und für bootstrap konfiguriert:
 ** linuxbrew
-** microk8s
 ** fluxcd
 ** helm
 ** ansible

@@ -20,8 +20,9 @@ _K8s Bootstrap, FluxCD BootStrap und BootStrap housekeeping-Task via Ansible-Pul
 
 *Zielstatus:*
 
-* K8s Cluster ist aufgesetzt und für gitOps konfiguriert
-* FluxCD ist konfiguriert und synchronisiert mit dem Git-Repository
+* K8s Cluster ist aufgesetzt
+** microk8s ist installiert und konfiguriert
+* FluxCD ist konfiguriert und synchronisiert mit einem Git-Repository
 * Ansible-Pull ist eingerichtet und führt regelmäßig Housekeeping-Tasks aus
 
 
@@ -34,7 +35,22 @@ _Initialisierung und Housekeeping-Tasks, die regelmäßig ausgeführt werden._
 
 
 
+== Quickstart
 
+. Install required collections:
++
+[source,shell]
+----
+ansible-galaxy install -r requirements.yml
+ansible-galaxy collection install -r requirements.yml
+----
+
+. Run the playbook:
++
+[source,shell]
+----
+ansible-playbook -i hosts.yml flimsyCastle-setup.yml --ask-become-pass
+----
 
 
 
