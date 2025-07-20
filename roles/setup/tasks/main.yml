@@ -1,21 +1,27 @@
 ---
 #TODO: Prüfen ob Linuxbrew bereits vorhanden ist
 
-- name: "Run Linuxbrew setup role"
-  when: ansible_user_id != "root"
-  ansible.builtin.fail:
-    msg: "WARNING: Linuxbrew can only be installed by the root user with this setup."
-
-- name: "Install Linuxbrew"
-  ansible.builtin.import_role:
-    name: linuxbrew
-  when: ansible_user_id == "root"
-
+#- name: "Run Linuxbrew setup role"
+#  when: ansible_user_id != "root"
+#  ansible.builtin.fail:
+#    msg: "WARNING: Linuxbrew can only be installed by the root user with this setup."
+#
+#- name: "Install Linuxbrew"
+#  ansible.builtin.import_role:
+#    name: linuxbrew
+#  when: ansible_user_id == "root"
 
 - name: Ensure FluxCD is installed
   ansible.builtin.include_tasks:
     file: install_flux_cli.yml
 
+- name: Ensure helm is installed
+  ansible.builtin.include_tasks:
+    file: install_helm.yml
+
+- name: Ensure ansible is installed
+  ansible.builtin.include_tasks:
+    file: install_ansible.yml
 
 ##TODO: Prüfe ob microk8s bereits installiert ist
 #

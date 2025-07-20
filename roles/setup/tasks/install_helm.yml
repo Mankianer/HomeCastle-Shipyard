@@ -1,0 +1,13 @@
+---
+- name: Check helm is installed
+  ansible.builtin.command: "helm version"
+  register: helm_version
+  changed_when: helm_version.rc != 0
+  failed_when: false
+  notify:
+    - Install helm
+
+- name: Show installed helm version
+  ansible.builtin.debug:
+    msg: "Helm is allready installed with version: {{ helm_version.stdout }}"
+  when: helm_version.stdout is defined and helm_version.stdout != ""
