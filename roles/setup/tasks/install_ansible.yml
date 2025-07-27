@@ -1,13 +1,13 @@
 ---
 - name: Check ansible is installed
   ansible.builtin.command: "ansible --version"
-  register: ansible_version
-  changed_when: ansible_version.rc != 0
+  register: ansible_version_check
+  changed_when: ansible_version_check.rc != 0
   failed_when: false
   notify:
     - Install ansible
 
 - name: Show installed ansible version
   ansible.builtin.debug:
-    msg: "Ansible is allready installed with version: {{ ansible_version.stdout }}"
-  when: ansible_version.stdout is defined and ansible_version.stdout != ""
+    msg: "Ansible is allready installed with version: {{ ansible_version_check.stdout }}"
+  when: ansible_version_check.stdout is defined and ansible_version_check.stdout != ""

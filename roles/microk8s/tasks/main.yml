@@ -2,3 +2,6 @@
 - name: Set up microk8s
   ansible.builtin.include_role:
     name: istvano.microk8s
+  vars:
+    users:
+      - "{{ microk8s_primary_user }}"

@@ -1,2 +1,2 @@
 ---
-fluxcd_linuxbrew_user_name: "{{ linuxbrew_user_name | default('linuxbrew') }}"
+setup_fluxcd_linuxbrew_user_name: "{{ linuxbrew_user_name | default('linuxbrew') }}"

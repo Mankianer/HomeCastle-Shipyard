@@ -5,7 +5,7 @@ _K8s Bootstrap, FluxCD BootStrap und BootStrap housekeeping-Task via Ansible-Pul
 *Zielstatus:*
 
 * K8s Cluster ist aufgesetzt
-** microk8s ist installiert und konfiguriert
+** microk8s ist installiert und konfiguriert mit der angeben Version
 * FluxCD ist konfiguriert und synchronisiert mit einem Git-Repository
 * Ansible-Pull ist eingerichtet und führt regelmäßig Housekeeping-Tasks aus
 // end::description[]

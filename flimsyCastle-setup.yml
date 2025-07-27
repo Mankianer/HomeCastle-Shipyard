@@ -20,3 +20,7 @@
 
   roles:
     - role: setup
+      tags: setup
+
+    - role: bootstrap
+      tags: bootstrap

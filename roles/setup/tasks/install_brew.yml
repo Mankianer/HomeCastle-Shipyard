@@ -10,7 +10,12 @@
   changed_when: brew_version.rc != 0
   failed_when: false
   notify:
-    - Install Linuxbrew
+    - Install linuxbrew
+
+- name: "Load Linuxbrew role"
+  ansible.builtin.import_role:
+    name: linuxbrew
+  when: run_install_linuxbrew | default(false)
 
 - name: Show installed brew version
   ansible.builtin.debug:

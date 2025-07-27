@@ -1,13 +1,12 @@
 ---
-# Snap channel (siehe `sudo snap info microk8s`)
-microk8s_channel: "1.32/stable"
+microk8s_version: "1.32/stable"
 
 # Add-ons, die nach der Installation aktiviert werden sollen
 microk8s_addons_default:
   - dns
   - hostpath-storage
   - ingress
-  - metrics-server      # optional, aber nützlich
+  - metrics-server
 
 # Zusätzliche Add-ons (kannst du aus site.yml überschreiben/erweitern)
 microk8s_addons_extra: []
@@ -16,5 +15,5 @@ microk8s_addons_extra: []
 microk8s_primary_user: "{{ ansible_user | default('ubuntu') }}"
 
 # Sektionen, die du bei Bedarf einschalten kannst
-microk8s_copy_kubeconfig: true
-microk8s_kubeconfig_path: "/home/{{ microk8s_primary_user }}/.kube"
+# microk8s_copy_kubeconfig: true
+# microk8s_kubeconfig_path: "/home/{{ microk8s_primary_user }}/.kube"

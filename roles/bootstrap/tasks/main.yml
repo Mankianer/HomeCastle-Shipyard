@@ -1,5 +1,5 @@
 ---
-#TODO: Prüfe ob microk8s bereits installiert ist
+# TODO: Prüfe ob microk8s bereits in der angegebenen Version installiert ist
 
 - name: "Install MicroK8s"
   ansible.builtin.import_role:

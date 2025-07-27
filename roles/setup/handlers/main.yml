@@ -1,13 +1,13 @@
 ---
 - name: Add fluxcd tap
-  become_user: "{{ fluxcd_linuxbrew_user_name }}"
+  become_user: "{{ setup_fluxcd_linuxbrew_user_name }}"
   become: true
   community.general.homebrew_tap:
     name: fluxcd/tap
     state: present
 
 - name: Install flux CLI
-  become_user: "{{ fluxcd_linuxbrew_user_name }}"
+  become_user: "{{ setup_fluxcd_linuxbrew_user_name }}"
   become: true
   community.general.homebrew:
     name: fluxcd/tap/flux
@@ -15,7 +15,7 @@
     update_homebrew: true
 
 - name: Install helm
-  become_user: "{{ fluxcd_linuxbrew_user_name }}"
+  become_user: "{{ setup_fluxcd_linuxbrew_user_name }}"
   become: true
   community.general.homebrew:
     name: helm
@@ -23,14 +23,14 @@
     update_homebrew: true
 
 - name: Install ansible
-  become_user: "{{ fluxcd_linuxbrew_user_name }}"
+  become_user: "{{ setup_fluxcd_linuxbrew_user_name }}"
   become: true
   community.general.homebrew:
     name: ansible
     state: present
     update_homebrew: true
 
-- name: "Install Linuxbrew"
-  ansible.builtin.import_role:
-    name: linuxbrew
+- name: "Install linuxbrew"
+  ansible.builtin.set_fact:
+    run_install_linuxbrew: true
   when: ansible_user_id == "root"
