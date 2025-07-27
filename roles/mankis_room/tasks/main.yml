@@ -2,3 +2,15 @@
 - name: Ensure user is created
   ansible.builtin.include_tasks:
     file: create_user.yml
+
+- name: Ensure zsh is installed and set as default shell
+  ansible.builtin.include_tasks:
+    file: zsh.yml
+
+- name: Ensure Oh My Zsh is installed
+  ansible.builtin.include_tasks:
+    file: oh-my-zsh.yml
+
+- name: Ensure Oh My Zsh plugins are installed
+  ansible.builtin.include_tasks:
+    file: oh-my-zsh-plugin.yml

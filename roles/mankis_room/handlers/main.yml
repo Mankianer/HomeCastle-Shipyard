@@ -1,0 +1,7 @@
+---
+- name: Add fluxcd tap
+  become_user: "{{ setup_fluxcd_linuxbrew_user_name }}"
+  become: true
+  community.general.homebrew_tap:
+    name: fluxcd/tap
+    state: present

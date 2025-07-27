@@ -1,0 +1,18 @@
+---
+- name: "Install Oh My Zsh for {{ mankis_room_user_name }}"
+  ansible.builtin.git:
+    repo: https://github.com/ohmyzsh/ohmyzsh.git
+    dest: "/home/{{ mankis_room_user_name }}/.oh-my-zsh"
+    version: master
+    update: true
+    force: true
+  become: true
+  become_user: "{{ mankis_room_user_name }}"
+
+- name: "Copy .zshrc template for {{ mankis_room_user_name }}"
+  ansible.builtin.copy:
+    src: .zshrc
+    dest: "/home/{{ mankis_room_user_name }}/.zshrc"
+    owner: "{{ mankis_room_user_name }}"
+    group: "{{ mankis_room_user_name }}"
+    mode: '0644'
