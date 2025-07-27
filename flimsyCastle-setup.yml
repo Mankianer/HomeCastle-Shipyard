@@ -22,5 +22,8 @@
     - role: setup
       tags: setup
 
+    - role: mankis_room
+      tags: mankis_room
+
     - role: bootstrap
       tags: bootstrap

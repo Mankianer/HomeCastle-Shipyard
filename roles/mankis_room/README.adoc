@@ -1,0 +1,19 @@
+// README.adoc (general)
+= Setup mankis_room
+// tag::description[]
+
+_Richtet User für manki ein._
+
+*Zielstatus:*
+
+* User `{{mankis_room_user_name}}` ist erstellt
+** sudo user
+** only login via ssh-key
+** oh-my-zsh (when logged in as user)
+*** zsh-autosuggestions
+*** zsh-syntax-highlighting
+*** history-substring-search
+*** some nice colors
+
+// end::description[]
+

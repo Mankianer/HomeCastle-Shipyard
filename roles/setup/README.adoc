@@ -1,6 +1,7 @@
 = SetUp HomeCastle-Tools
 // tag::description[]
-_Installiert un konfiguriert von Tools._
+
+_Installiert und konfiguriert von Tools._
 
 *Zielstatus:*
 

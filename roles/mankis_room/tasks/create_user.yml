@@ -1,0 +1,33 @@
+---
+- name: "Ensure user exists."
+  ansible.builtin.user:
+    name: "{{ mankis_room_user_name }}"
+    shell: /bin/bash
+    append: true
+    groups: sudo
+    state: present
+    create_home: true
+    password: "!"
+
+- name: "Ensure user can sudo without password"
+  ansible.builtin.copy:
+    dest: "/etc/sudoers.d/{{ mankis_room_user_name }}"
+    content: "{{ mankis_room_user_name }} ALL=(ALL) NOPASSWD:ALL"
+    owner: root
+    group: root
+    mode: '0440'
+
+- name: "Ensure .ssh directory exists for {{ mankis_room_user_name }}"
+  ansible.builtin.file:
+    path: "/home/{{ mankis_room_user_name }}/.ssh"
+    state: directory
+    owner: "{{ mankis_room_user_name }}"
+    group: "{{ mankis_room_user_name }}"
+    mode: '0700'
+
+- name: "Add SSH public keys for {{ mankis_room_user_name }}"
+  ansible.posix.authorized_key:
+    user: "{{ mankis_room_user_name }}"
+    state: present
+    key: "{{ lookup('file', item) }}"
+  loop: "{{ mankis_room_authorized_key_files }}"
