@@ -1,0 +1,2 @@
+---
+mankis_room_create_user_name: "{{ mankis_room_user_name | default(manki) }}"

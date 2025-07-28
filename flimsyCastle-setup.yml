@@ -17,13 +17,26 @@
 
   roles:
     - role: setup_install_brew
-      tags: setup_install_brew
+      tags:
+        - setup_install_brew
+        - setup
 
     - role: setup_install_flux_cli
-      tags: setup_install_flux_cli
+      tags:
+        - setup_install_flux_cli
+        - setup
 
     - role: setup_install_helm
-      tags: setup_install_helm
+      tags:
+        - setup_install_helm
+        - setup
 
     - role: setup_install_ansible
-      tags: setup_install_ansible
+      tags:
+        - setup_install_ansible
+        - setup
+
+    - role: mankis_room_create_user
+      tags:
+        - mankis_room_create_user
+        - mankis_room
