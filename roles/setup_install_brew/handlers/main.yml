@@ -1,0 +1,5 @@
+---
+- name: "Install linuxbrew"
+  ansible.builtin.set_fact:
+    run_install_linuxbrew: true
+  when: ansible_user_id == "root"

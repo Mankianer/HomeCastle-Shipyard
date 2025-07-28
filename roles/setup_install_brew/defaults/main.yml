@@ -1,0 +1,3 @@
+---
+setup_install_brew_linuxbrew_user_shell: "/usr/sbin/nologin"
+setup_install_brew_linuxbrew_sudo_cmd: "ALL=(ALL) NOPASSWD:ALL"

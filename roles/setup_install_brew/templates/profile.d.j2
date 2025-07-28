@@ -1,0 +1,4 @@
+# Managed by Ansible – do not edit manually
+if [ -d /home/{{ linuxbrew_user_name }}/.linuxbrew ]; then
+    eval "$(/home/{{ linuxbrew_user_name }}/.linuxbrew/bin/brew shellenv)"
+fi
