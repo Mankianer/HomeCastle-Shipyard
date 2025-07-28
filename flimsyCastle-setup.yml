@@ -18,3 +18,6 @@
   roles:
     - role: setup_install_brew
       tags: setup_install_brew
+
+    - role: setup_install_ansible
+      tags: setup_install_ansible
