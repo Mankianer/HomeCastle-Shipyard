@@ -1,3 +1,4 @@
+---
 - name: Odroid-GitOps root setup
   hosts: flimsy-castle-root
   gather_facts: true
@@ -44,4 +45,9 @@
     - role: mankis_room_setup_zsh
       tags:
         - mankis_room_setup_zsh
+        - mankis_room
+
+    - role: mankis_room_setup_oh_my_zsh
+      tags:
+        - mankis_room_setup_oh_my_zsh
         - mankis_room

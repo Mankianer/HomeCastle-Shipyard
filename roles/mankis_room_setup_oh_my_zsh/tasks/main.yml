@@ -1,0 +1,8 @@
+---
+- name: Ensure Oh My Zsh is installed for {{ mankis_room_user_name }}
+  ansible.builtin.include_tasks:
+    file: oh-my-zsh.yml
+
+- name: Ensure Oh My Zsh plugins are installed for {{ mankis_room_user_name }}
+  ansible.builtin.include_tasks:
+    file: oh-my-zsh-plugin.yml
