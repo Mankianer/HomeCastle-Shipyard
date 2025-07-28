@@ -1,0 +1,8 @@
+---
+- name: Install helm
+  become_user: "{{ linuxbrew_user_name }}"
+  become: true
+  community.general.homebrew:
+    name: helm
+    state: present
+    update_homebrew: true

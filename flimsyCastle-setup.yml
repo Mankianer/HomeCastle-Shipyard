@@ -22,5 +22,8 @@
     - role: setup_install_flux_cli
       tags: setup_install_flux_cli
 
+    - role: setup_install_helm
+      tags: setup_install_helm
+
     - role: setup_install_ansible
       tags: setup_install_ansible
