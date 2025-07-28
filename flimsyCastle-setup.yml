@@ -19,5 +19,8 @@
     - role: setup_install_brew
       tags: setup_install_brew
 
+    - role: setup_install_flux_cli
+      tags: setup_install_flux_cli
+
     - role: setup_install_ansible
       tags: setup_install_ansible
