@@ -40,3 +40,8 @@
       tags:
         - mankis_room_create_user
         - mankis_room
+
+    - role: mankis_room_setup_zsh
+      tags:
+        - mankis_room_setup_zsh
+        - mankis_room

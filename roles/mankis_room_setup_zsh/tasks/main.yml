@@ -1,0 +1,10 @@
+---
+- name: "Ensure zsh is installed"
+  ansible.builtin.package:
+    name: zsh
+    state: present
+
+- name: "Set zsh as default shell for {{ mankis_room_user_name }}"
+  ansible.builtin.user:
+    name: "{{ mankis_room_user_name }}"
+    shell: /usr/bin/zsh
