@@ -1,0 +1,8 @@
+---
+bootstrap_flux_vars:
+    github_owner: my-github-username
+    github_repo: my-repository-name
+    github_personal: true
+    github_token: "{{ lookup('env', 'GITHUB_TOKEN') }}"
+    branch: main
+    path: clusters/my-cluster

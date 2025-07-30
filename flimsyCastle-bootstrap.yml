@@ -1,0 +1,26 @@
+---
+- name: HomeCastle bootstrap 🥾
+  hosts: flimsy-castle
+  gather_facts: true
+
+  environment:
+    PATH: "/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:{{ ansible_env.PATH }}"
+
+  roles:
+    - role: istvano.microk8s
+      vars:
+        users:
+          - "{{ microk8s_primary_user }}"
+        microk8s_dns_resolvers: 1.1.1.1
+      tags: microk8s
+    # BootStrap Flux
+    - role: bootstrap_flux
+      vars:
+        bootstrap_flux_vars:
+          github_owner: "{{ github_user }}"
+          github_repo: "{{ flux_gitops.repo }}"
+          github_personal: "{{ flux_gitops.private }}"
+          github_token: "{{ lookup('env', 'GITHUB_TOKEN') }}"
+          path: "{{ flux_gitops.path }}"
+          branch: "{{ flux_gitops.branch }}"
+      tags: flux-bootstrap

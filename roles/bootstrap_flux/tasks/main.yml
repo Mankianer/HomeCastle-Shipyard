@@ -1,0 +1,24 @@
+---
+- name: Flux pre check
+  ansible.builtin.shell: |
+    flux check --pre
+  register: flux_check_pre
+  changed_when: false
+  failed_when: flux_check_pre.rc != 0
+
+- name: GitHub Token has to be set
+  ansible.builtin.fail:
+    msg: The system may not be provisioned according to the CMDB status.
+  when: bootstrap_flux_vars.github_token is undefined or bootstrap_flux_vars.github_token == ""
+
+- name: Flux bootstrap with GitHub
+  ansible.builtin.shell: |
+    export GITHUB_TOKEN={{ bootstrap_flux_vars.github_token }}
+    flux bootstrap github \
+    --token-auth \
+    --owner={{ bootstrap_flux_vars.github_owner }} \
+    --repository={{ bootstrap_flux_vars.github_repo }} \
+    --branch={{ bootstrap_flux_vars.branch }} \
+    --path={{ bootstrap_flux_vars.path }} \
+    {% if bootstrap_flux_vars.github_personal | bool %}--personal{% endif %} \
+  changed_when: false
