@@ -1,22 +1,22 @@
 ---
-- name: Odroid-GitOps root setup
+- name: HomeCastle root setup 👑🏗️
   hosts: flimsy-castle-root
   gather_facts: true
-
   environment:
     PATH: "/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:{{ ansible_env.PATH }}"
-
-  pre_tasks:
-    - name: Ensure base packages required by roles are present
-      ansible.builtin.package:
-        name: "{{ item }}"
-        state: present
-      loop:
-        - python3
-        - rsync
-      tags: prerequisites
-
   roles:
+    - role: mankis_room_create_user
+      tags:
+        - mankis_room_create_user
+        - mankis_room
+    - role: mankis_room_setup_zsh
+      tags:
+        - mankis_room_setup_zsh
+        - mankis_room
+    - role: mankis_room_setup_oh_my_zsh
+      tags:
+        - mankis_room_setup_oh_my_zsh
+        - mankis_room
     - role: setup_install_brew
       tags:
         - setup_install_brew
@@ -36,18 +36,3 @@
       tags:
         - setup_install_ansible
         - setup
-
-    - role: mankis_room_create_user
-      tags:
-        - mankis_room_create_user
-        - mankis_room
-
-    - role: mankis_room_setup_zsh
-      tags:
-        - mankis_room_setup_zsh
-        - mankis_room
-
-    - role: mankis_room_setup_oh_my_zsh
-      tags:
-        - mankis_room_setup_oh_my_zsh
-        - mankis_room

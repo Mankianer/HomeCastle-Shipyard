@@ -1,0 +1,11 @@
+---
+setup_install_brew_dependencies: # Ubuntu
+  - build-essential
+  - curl
+  - git
+  - locales
+  - language-pack-en
+
+setup_install_brew_install_url: "https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh"
+
+setup_install_brew_install_tmp: "/tmp/linuxbrew"

@@ -2,13 +2,33 @@
 - name: Check flux is installed
   ansible.builtin.command: "flux --version"
   register: fluxcd_version
-  changed_when: fluxcd_version.rc != 0
+  changed_when: false
   failed_when: false
-  notify:
-    - Add fluxcd tap
-    - Install flux CLI
+
+- name: Add fluxcd tap
+  become_user: "{{ linuxbrew_user_name }}"
+  become: true
+  community.general.homebrew_tap:
+    name: fluxcd/tap
+    state: present
+  when: fluxcd_version.rc != 0
+
+- name: Install flux CLI
+  become_user: "{{ linuxbrew_user_name }}"
+  become: true
+  community.general.homebrew:
+    name: fluxcd/tap/flux
+    state: present
+    update_homebrew: true
+  when: fluxcd_version.rc != 0
+
+- name: Check flux is installed
+  ansible.builtin.command: "flux --version"
+  register: fluxcd_version
+  changed_when: false
+  when: fluxcd_version.rc != 0
 
 - name: Show installed flux version
   ansible.builtin.debug:
-    msg: "Flux is allready installed with version: {{ fluxcd_version.stdout }}"
+    msg: "Flux is already installed with version: {{ fluxcd_version.stdout }}"
   when: fluxcd_version.stdout is defined and fluxcd_version.stdout != ""

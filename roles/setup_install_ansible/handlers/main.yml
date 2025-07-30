@@ -1,8 +1,0 @@
----
-- name: Install ansible
-  become_user: "{{ linuxbrew_user_name }}"
-  become: true
-  community.general.homebrew:
-    name: ansible
-    state: present
-    update_homebrew: true

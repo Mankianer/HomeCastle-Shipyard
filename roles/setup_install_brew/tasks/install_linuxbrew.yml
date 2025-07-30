@@ -1,0 +1,8 @@
+---
+- name: Install Linuxbrew
+  become: true
+  become_user: "{{ linuxbrew_user_name | default('linuxbrew') }}"
+  ansible.builtin.shell:
+    cmd: NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  register: install_result
+  changed_when: "install_result.rc == 0"

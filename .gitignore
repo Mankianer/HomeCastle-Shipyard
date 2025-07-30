@@ -2,3 +2,4 @@
 /.idea/
 /.ansible/
 /HomeCastle-Shipyard.iml
+/ansible.cfg
