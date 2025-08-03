@@ -21,5 +21,6 @@
     line: "export {{ item }}=\"{{ lookup('env', item) }}\""
     create: true
     insertafter: EOF
+    mode: '0600'
   when: lookup('env', item) is defined and lookup('env', item) != ''
   loop: "{{ mankis_room_setup_oh_my_zsh_copyenv }}"
