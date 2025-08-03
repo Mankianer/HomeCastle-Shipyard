@@ -1,1 +1,3 @@
 ---
+mankis_room_setup_oh_my_zsh_copyenv:
+  - GITHUB_TOKEN

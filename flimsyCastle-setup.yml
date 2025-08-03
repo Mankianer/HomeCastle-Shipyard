@@ -14,25 +14,43 @@
         - mankis_room_setup_zsh
         - mankis_room
     - role: mankis_room_setup_oh_my_zsh
+      vars:
+        mankis_room_setup_oh_my_zsh_copyenv:
+          - GITHUB_TOKEN
       tags:
         - mankis_room_setup_oh_my_zsh
         - mankis_room
+
     - role: setup_install_brew
       tags:
         - setup_install_brew
         - setup
-
-    - role: setup_install_flux_cli
+  tasks:
+    - name: "Add brew tap"
+      become_user: "{{ linuxbrew_user_name }}"
+      become: true
+      community.general.homebrew_tap:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - fluxcd/tap
       tags:
-        - setup_install_flux_cli
+        - setup_install_brew
         - setup
 
-    - role: setup_install_helm
+    - name: "Install brew packages"
+      become_user: "{{ linuxbrew_user_name }}"
+      become: true
+      community.general.homebrew:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - helm
+        - fluxcd/tap/flux
+        - ansible
+        - gnupg
+        - sops
+        - age
       tags:
-        - setup_install_helm
-        - setup
-
-    - role: setup_install_ansible
-      tags:
-        - setup_install_ansible
+        - setup_install_brew
         - setup

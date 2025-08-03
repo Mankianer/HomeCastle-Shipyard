@@ -6,3 +6,7 @@
 - name: Ensure Oh My Zsh plugins are installed for {{ mankis_room_user_name }}
   ansible.builtin.include_tasks:
     file: oh-my-zsh-plugin.yml
+
+- name: Ensure .zshrc is installed for {{ mankis_room_user_name }}
+  ansible.builtin.include_tasks:
+    file: zshrc.yml

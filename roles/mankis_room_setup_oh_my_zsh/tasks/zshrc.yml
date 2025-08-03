@@ -1,0 +1,25 @@
+---
+- name: "Insert .zshrc template for {{ mankis_room_user_name }}"
+  become: true
+  become_user: "{{ mankis_room_user_name }}"
+  ansible.builtin.blockinfile:
+    path: "/home/{{ mankis_room_user_name }}/.zshrc"
+    marker: "# {mark} ANSIBLE MANAGED from mankis_room"
+    block: "{{ lookup('file', 'files/.zshrc') }}"
+    create: true
+    insertafter: EOF
+    owner: "{{ mankis_room_user_name }}"
+    group: "{{ mankis_room_user_name }}"
+    mode: '0600'
+
+- name: "Copy ENV from Host to .zshrc"
+  become: true
+  become_user: "{{ mankis_room_user_name }}"
+  ansible.builtin.lineinfile:
+    path: "/home/{{ mankis_room_user_name }}/.zshrc"
+    regexp: "^export {{ item }}="
+    line: "export {{ item }}=\"{{ lookup('env', item) }}\""
+    create: true
+    insertafter: EOF
+  when: lookup('env', item) is defined and lookup('env', item) != ''
+  loop: "{{ mankis_room_setup_oh_my_zsh_copyenv }}"
